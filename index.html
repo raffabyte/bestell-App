@@ -6,7 +6,7 @@
     <title>Bestell App</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Special+Gothic+Condensed+One&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/icons/favicon-32x32.png">
     <script src="scripts/db.js"></script>
     <script src="scripts/template.js"></script>
@@ -14,10 +14,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styles/assets.css">
     <link rel="stylesheet" href="styles/basket.css">
-    <link rel="stylesheet" href="styles/fonts.css">
-    <link rel="stylesheet" href="styles/standart.css">
+    <link rel="stylesheet" href="styles/content.css">
 </head>
-<body>
+<body onload="init()">
     <header>
         <img src="assets/icons/Bestell App- Logo.svg" alt="">
         <img class="invert" src="assets/img/menu.png" alt="">
@@ -28,35 +27,49 @@
                 <img class="banner_restaurant" src="assets/img/restaurant_banner3.png" alt="">
                 <img class="logo_restaurant" src="assets/img/logo_restaurant.png" alt="">
             </div>
-            <h1 class="padding16">Gold & Gabel</h1>
-            <p class="padding16">Bewertung(4,7 von 5 Sternen)</p>
-            <div class="grauer_balken">
-                <img class="rechter-pfeil" src="assets/img/rechter-pfeil.png" alt="">
-                <p class="graue_schrift">Hauptgerichte</p>
-                <p class="graue_schrift">Beilagen</p>
-                <p class="graue_schrift">Desserts</p>
-                <p class="graue_schrift">getränke</p>
+            <div class="Überschrift_Bewertung">
+                <h1>Gold & Gabel</h1>
+                <p class="Bewertung">Bewertung(4,7 von 5 Sternen)</p>
             </div>
-            <div class="banner_gerichte">
-                <img class="banner_gerichte_img" src="assets/img/hauptgerichte.png" alt="">
+            <div class="fast_menu">
+                <img class="rechter-pfeil" src="assets/img/rechter-pfeil.png" alt="">
+                <p class="fast_menu_schrift">Hauptgerichte</p>
+                <p class="fast_menu_schrift">Beilagen</p>
+                <p class="fast_menu_schrift">Desserts</p>
+                <p class="fast_menu_schrift">getränke</p>
+            </div>
+            <div class="gerichte_banner">
+                <img class="gerichte_banner_img" src="assets/img/hauptgerichte.png" alt="">
                 <h2>Hauptgerichte</h2>
             </div>
-            <div class="banner_gerichte">
-                <img class="banner_gerichte_img" src="assets/img/beilagen.png" alt="">
+            <div id="hauptgerichte_speisen" class="speisen_div">
+
+            </div>
+            <div class="gerichte_banner">
+                <img class="gerichte_banner_img" src="assets/img/beilagen.png" alt="">
                 <h2>Beilagen</h2>
             </div>
-            <div class="banner_gerichte">
-                <img class="banner_gerichte_img" src="assets/img/desserts.png" alt="">
+            <div id="beilagen_speisen" class="speisen_div">
+
+            </div>
+            <div class="gerichte_banner">
+                <img class="gerichte_banner_img" src="assets/img/desserts.png" alt="">
                 <h2>Desserts</h2>
             </div>
-            <div class="banner_gerichte">
-                <img class="banner_gerichte_img" src="assets/img/getränke.png" alt="">
+            <div id="desserts_speisen" class="speisen_div">
+
+            </div>
+            <div class="gerichte_banner">
+                <img class="gerichte_banner_img" src="assets/img/getränke.png" alt="">
                 <h2>Getränke</h2>
+            </div>
+            <div id="getränke_speisen" class="speisen_div">
+
             </div>
         </section>
         <section class="basket_wrapper">
             <div class="basket">
-                <h2>Warenkorp</h2>
+                <h2 class="basket_header">Warenkorp</h2>
                 <div class="grauer_seperator">
 
                 </div>

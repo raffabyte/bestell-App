@@ -1,4 +1,4 @@
-const menu = {
+let menu = {
     hauptgerichte: [
       {
         name: "Spaghetti Carbonara",
