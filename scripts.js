@@ -1,7 +1,9 @@
 function init() {
     renderHauptgerichte()
+    renderBeilagen()
+    renderDesserts()
+    renderGetränke()
 }
-
 function renderHauptgerichte() {
     let contentRef = document.getElementById('hauptgerichte_speisen')
     contentRef = ""
@@ -9,4 +11,51 @@ function renderHauptgerichte() {
         let contetntRef = document.getElementById('hauptgerichte_speisen')
         contetntRef.innerHTML += getHauptgerichtSpeisenHtml(index)
     }
+}
+function renderBeilagen() {
+    let contentRef = document.getElementById('beilagen_speisen')
+    contentRef = ""
+    for (let index = 0; index < menu.beilagen.length; index++) {
+        let contetntRef = document.getElementById('beilagen_speisen')
+        contetntRef.innerHTML += getBeilageSpeisenHtml(index)
+    }
+}
+function renderDesserts() {
+    let contentRef = document.getElementById('desserts_speisen')
+    contentRef = ""
+    for (let index = 0; index < menu.desserts.length; index++) {
+        let contetntRef = document.getElementById('desserts_speisen')
+        contetntRef.innerHTML += getDessertSpeisenHtml(index)
+    }
+}
+function renderGetränke() {
+    let contentRef = document.getElementById('getränke_speisen')
+    contentRef = ""
+    for (let index = 0; index < menu.getränke.length; index++) {
+        let contetntRef = document.getElementById('getränke_speisen')
+        contetntRef.innerHTML += getGetränkeHtml(index)
+    }
+}
+function addToBasketHauptgerichte(index) {
+    menu.hauptgerichte[index].amount++
+    let contentRef = document.getElementById('basket_items_haupgerichte')
+    contentRef.innerHTML = getBasketHtml(index)
+}
+function addToBasketBeilagen(index) {
+    menu.beilagen[index].amount++
+    let contentRef = document.getElementById('basket_items_beilagen')
+    contentRef.innerHTML = getBasketHtml(index)
+}
+function addToBasketDesserts(index) {
+    menu.desserts[index].amount++
+    let contentRef = document.getElementById('basket_items_desserts')
+    contentRef.innerHTML = getBasketHtml(index)
+}
+function addToBasketGetränke(index) {
+    menu.getränke[index].amount++
+    let contentRef = document.getElementById('basket_items_getränke')
+    contentRef.innerHTML = getBasketHtml(index)
+}
+function addToBasket(){
+    
 }

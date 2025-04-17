@@ -36,7 +36,12 @@
     background-color: #F7F6F1;
     padding: 0 16px;
     gap: 22px;
+    overflow-x: auto;
+    scrollbar-width: none;
     font-family: "Special Gothic Expanded One", sans-serif
+}
+a {
+    text-decoration: none;
 }
 .fast_menu_schrift {
     color: #989694;
@@ -67,8 +72,36 @@
 .speise_div {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    position: relative;
+    gap: 8px;
     border: 2px solid #E2E0DA;
     box-sizing: border-box;
     padding: 16px;
+}
+.speise_div:hover {
+    cursor: pointer;
+    background-color: #FFE2C2;
+}
+.speisen_beschreibung {
+    color: #43413f;
+}
+.speisen_preis {
+    color: #FE7E00;
+    font-weight: bold;
+}
+.plus_button {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    border: 2px solid #E2E0DA;
+    padding: 4px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.plus {
+    height: 26px;
+    width: 26px;
+    filter: invert(47%) sepia(98%) saturate(1615%) hue-rotate(1deg) brightness(103%) contrast(101%);
 }
