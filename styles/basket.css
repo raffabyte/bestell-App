@@ -19,3 +19,31 @@
     height: 2px;
     background-color: #E2E0DA;
 }
+.basket_items {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 16px;
+}
+.basket_item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.dispaly_flex {
+    display: flex;
+    height: 30px;
+    align-items: center;
+}
+.minusPlus_button {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0;
+}
+.minusUndPlus {
+    height: 22px;
+    width: 22px;
+    filter: invert(47%) sepia(98%) saturate(1615%) hue-rotate(1deg) brightness(103%) contrast(101%);
+}

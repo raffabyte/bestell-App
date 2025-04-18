@@ -36,26 +36,12 @@ function renderGetränke() {
         contetntRef.innerHTML += getGetränkeHtml(index)
     }
 }
-function addToBasketHauptgerichte(index) {
-    menu.hauptgerichte[index].amount++
-    let contentRef = document.getElementById('basket_items_haupgerichte')
-    contentRef.innerHTML = getBasketHtml(index)
-}
-function addToBasketBeilagen(index) {
-    menu.beilagen[index].amount++
-    let contentRef = document.getElementById('basket_items_beilagen')
-    contentRef.innerHTML = getBasketHtml(index)
-}
-function addToBasketDesserts(index) {
-    menu.desserts[index].amount++
-    let contentRef = document.getElementById('basket_items_desserts')
-    contentRef.innerHTML = getBasketHtml(index)
-}
-function addToBasketGetränke(index) {
-    menu.getränke[index].amount++
-    let contentRef = document.getElementById('basket_items_getränke')
-    contentRef.innerHTML = getBasketHtml(index)
-}
-function addToBasket(){
+function addToBasket(index, category) {
+    menu[category][index].amount++
+    let speiseAnzahl = menu[category][index].amount
+    if(speiseAnzahl === 1) {
+        let contetntRef = document.getElementById('basket_items')
+        contetntRef.innerHTML += getBasketHtml(index, category) 
+    }
     
 }
