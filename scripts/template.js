@@ -42,11 +42,11 @@ function getBasketHtml(index) {
     return `<div class="basket_item">
      <h4>${basket[index].name}</h4>
      <div class="dispaly_flex">
-     <button class="minusPlusMüleimer_button"><img class="minusUndPlus" src="assets/img/minus.png"></button>
+     <button onclick="minusAmount(${index})" class="minusPlusMüleimer_button"><img class="minusUndPlus" src="assets/img/minus.png"></button>
      <p>${basket[index].amount}x</p>
-     <button class="minusPlusMüleimer_button"><img class="minusUndPlus" src="assets/img/plus.png"></button>
+     <button onclick="plusAmount(${index})" class="minusPlusMüleimer_button"><img class="minusUndPlus" src="assets/img/plus.png"></button>
      <p class="preisAmountDishes">${calculatePreis(basket[index].amount, basket[index].preis)}€</p>
-     <button class="minusPlusMüleimer_button"><img class="Mülleimer" src="assets/img/mulleimer.png"></button>
+     <button onclick="remove(${index})" class="minusPlusMüleimer_button"><img class="Mülleimer" src="assets/img/mulleimer.png"></button>
      </div>
      <div class="grauer_seperator_small"></div>
      </div>`

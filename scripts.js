@@ -94,4 +94,25 @@ function checkLieferkosten() {
 function checkTotalAmount() {
     return ClaculateZwischensumme() + checkLieferkosten()
 }
+function minusAmount(index) {
+    if (basket[index].amount > 1) {
+        basket[index].amount--; 
+    } else {
+        basket.splice(index, 1);  
+    }
 
+    saveBasketTolocalStorage();
+    renderBasket();
+}
+function plusAmount(index) {
+    basket[index].amount++;
+
+    saveBasketTolocalStorage();
+    renderBasket();
+}
+function remove(index) {
+    basket.splice(index, 1);
+
+    saveBasketTolocalStorage();
+    renderBasket();
+}
