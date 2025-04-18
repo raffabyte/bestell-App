@@ -3,45 +3,95 @@ function init() {
     renderBeilagen()
     renderDesserts()
     renderGetränke()
+    getBasketFromLocalStorage()
+    renderBasket()
 }
 function renderHauptgerichte() {
     let contentRef = document.getElementById('hauptgerichte_speisen')
-    contentRef = ""
+    contentRef.innerHTML = ""
     for (let index = 0; index < menu.hauptgerichte.length; index++) {
-        let contetntRef = document.getElementById('hauptgerichte_speisen')
-        contetntRef.innerHTML += getHauptgerichtSpeisenHtml(index)
+        contentRef.innerHTML += getHauptgerichtSpeisenHtml(index)
     }
 }
 function renderBeilagen() {
     let contentRef = document.getElementById('beilagen_speisen')
-    contentRef = ""
+    contentRef.innerHTML = ""
     for (let index = 0; index < menu.beilagen.length; index++) {
-        let contetntRef = document.getElementById('beilagen_speisen')
-        contetntRef.innerHTML += getBeilageSpeisenHtml(index)
+        contentRef.innerHTML += getBeilageSpeisenHtml(index)
     }
 }
 function renderDesserts() {
     let contentRef = document.getElementById('desserts_speisen')
-    contentRef = ""
+    contentRef.innerHTML = ""
     for (let index = 0; index < menu.desserts.length; index++) {
-        let contetntRef = document.getElementById('desserts_speisen')
-        contetntRef.innerHTML += getDessertSpeisenHtml(index)
+        contentRef.innerHTML += getDessertSpeisenHtml(index)
     }
 }
 function renderGetränke() {
     let contentRef = document.getElementById('getränke_speisen')
-    contentRef = ""
+    contentRef.innerHTML = ""
     for (let index = 0; index < menu.getränke.length; index++) {
-        let contetntRef = document.getElementById('getränke_speisen')
-        contetntRef.innerHTML += getGetränkeHtml(index)
+        contentRef.innerHTML += getGetränkeHtml(index)
     }
 }
-function addToBasket(index, category) {
-    menu[category][index].amount++
-    let speiseAnzahl = menu[category][index].amount
-    if(speiseAnzahl === 1) {
-        let contetntRef = document.getElementById('basket_items')
-        contetntRef.innerHTML += getBasketHtml(index, category) 
+function pushToBasket(index, category) {
+    let item = menu[category][index];
+
+    let existingItem = basket.find(function(basketItem) {
+        return basketItem.name === item.name;
+    });
+
+    if (existingItem) {
+        existingItem.amount++;
+    } else {
+        basket.push({
+            name: item.name,
+            amount: 1,  
+            preis: item.preis
+        });
     }
-    
+
+    saveBasketTolocalStorage()
+    renderBasket();
 }
+function renderBasket(){
+    let contentRef = document.getElementById('basket_items')
+    contentRef.innerHTML = ""
+
+    for (let index = 0; index < basket.length; index++) {
+        contentRef.innerHTML += getBasketHtml(index)
+    }
+
+    if (basket.length > 0) {
+        renderBill();
+        document.getElementById('bill').style.display = 'flex';
+    } else {
+        document.getElementById('bill').style.display = 'none';
+    }
+}
+function calculatePreis(amount, preis) {
+    let total = amount * preis;
+    return total.toFixed(2)
+}
+function renderBill() {
+    let Zwischensumme = ClaculateZwischensumme()
+    let Lieferkosten = checkLieferkosten()
+    let Gesamt = checkTotalAmount()
+
+    let contentRef = document.getElementById('bill')
+    contentRef.innerHTML = getBillHtml(Zwischensumme, Lieferkosten, Gesamt)
+}
+function ClaculateZwischensumme() {
+    let total = 0;
+    for (let i = 0; i < basket.length; i++) {
+        total += basket[i].amount * basket[i].preis; 
+    }
+    return total
+}
+function checkLieferkosten() {
+    return 5.00
+}
+function checkTotalAmount() {
+    return ClaculateZwischensumme() + checkLieferkosten()
+}
+

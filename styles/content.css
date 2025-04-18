@@ -1,5 +1,6 @@
 .content {
     width: calc(100% - 300px);
+    padding-bottom: 16px;
 }
 .logo_banner {
     position: relative;
