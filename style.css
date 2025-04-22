@@ -1,5 +1,20 @@
 html {
     scroll-behavior: smooth;
+    scrollbar-width: thin; 
+    scrollbar-color: #FE7E00 transparent; 
+  }
+  
+  html::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  html::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  html::-webkit-scrollbar-thumb {
+    background-color: #FE7E00;
+    border-radius: 10px;
   }
 body {
     margin: 0;

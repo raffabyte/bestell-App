@@ -1,9 +1,12 @@
+let Lieferkosten = 0
+
 function init() {
     renderHauptgerichte()
     renderBeilagen()
     renderDesserts()
     renderGetränke()
     getBasketFromLocalStorage()
+    localStorageLieferung()
     renderBasket()
 }
 function renderHauptgerichte() {
@@ -34,6 +37,14 @@ function renderGetränke() {
         contentRef.innerHTML += getGetränkeHtml(index)
     }
 }
+function hideText() {
+    if (basket.length > 0) {
+        document.getElementById('basket_text').style.display = 'none'
+    }
+    else {
+        document.getElementById('basket_text').style.display = 'flex'
+    }
+}
 function pushToBasket(index, category) {
     let item = menu[category][index];
 
@@ -62,6 +73,11 @@ function renderBasket(){
         contentRef.innerHTML += getBasketHtml(index)
     }
 
+    hideLieferungIfEmpty()
+    hideBill()
+    hideText()
+}
+function hideBill() {
     if (basket.length > 0) {
         renderBill();
         document.getElementById('bill').style.display = 'flex';
@@ -72,6 +88,28 @@ function renderBasket(){
 function calculatePreis(amount, preis) {
     let total = amount * preis;
     return total.toFixed(2)
+}
+function hideLieferungIfEmpty() {
+    if (basket.length > 0) {
+        document.getElementById('abholen_liefern').style.display = 'flex'
+    }
+    else {
+        document.getElementById('abholen_liefern').style.display = 'none'
+    }
+}
+function liefernLassen() {
+    Lieferkosten = 5
+    document.getElementById('selbstAbholen').classList.remove('ausgewählt')
+    document.getElementById('liefernLassen').classList.add('ausgewählt')
+    localStorage.setItem('lieferung', 'liefern')
+    renderBill()
+}
+function selbstAbholen() {
+    Lieferkosten = 0
+    document.getElementById('liefernLassen').classList.remove('ausgewählt')
+    document.getElementById('selbstAbholen').classList.add('ausgewählt')
+    localStorage.setItem('lieferung', 'abholen')
+    renderBill()
 }
 function renderBill() {
     let Zwischensumme = ClaculateZwischensumme()
@@ -89,7 +127,7 @@ function ClaculateZwischensumme() {
     return total
 }
 function checkLieferkosten() {
-    return 5.00
+    return Lieferkosten
 }
 function checkTotalAmount() {
     return ClaculateZwischensumme() + checkLieferkosten()
