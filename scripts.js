@@ -1,6 +1,8 @@
 let Lieferkosten = 0
 
 function init() {
+    checkIfBasketFull()
+    checkScroll()
     renderHauptgerichte()
     renderBeilagen()
     renderDesserts()
@@ -153,4 +155,20 @@ function remove(index) {
 
     saveBasketTolocalStorage();
     renderBasket();
+}
+function toggleBasket() {
+    document.getElementById('basket_wrapper').classList.toggle('basket_open')
+}
+
+window.addEventListener("scroll", checkScroll);
+
+function checkScroll() {
+  var y = window.scrollY;
+  var stickyBasket = document.getElementById("sticky_basket");
+
+  if (y > 100) {
+    stickyBasket.style.display = "block";
+  } else {
+    stickyBasket.style.display = "none";
+  }
 }

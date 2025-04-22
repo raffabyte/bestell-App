@@ -1,0 +1,42 @@
+@media (max-width: 750px) {
+    .content_wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .content {
+        width: 100%;
+        padding-bottom: 16px;
+    }
+    .basket_wrapper {
+        position: fixed; 
+        height: 100%;
+        width: 100%;
+        background: white;
+        box-shadow: 0 -5px 10px rgba(0,0,0,0.2);
+        transform: translateY(100%); 
+        transition: transform 0.3s ease;
+        z-index: 1000;
+      }
+      .basket_wrapper.basket_open {
+        transform: translateY(0); 
+      }
+    .sticky_basket {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+    }
+    .sticky_basket.hidden {
+        transform: translateY(100%);
+      }
+    .sticky_basket_button {
+        width: 100%;
+        height: 76px;
+        color: white;
+        background-color: #3A83F6;
+        font-size: 30px;
+        font-weight: bold;
+        border: none;
+    }
+  }
