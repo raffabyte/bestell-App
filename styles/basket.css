@@ -115,3 +115,9 @@
 .gesamt {
     font-weight: bold;
 }
+.close {
+    display: none;
+}
+.sticky_basket {
+    display: none !important;
+}

@@ -21,6 +21,7 @@
         transform: translateY(0); 
       }
     .sticky_basket {
+        display: block !important;
         position: fixed;
         bottom: 0;
         width: 100%;
@@ -46,5 +47,14 @@
     .button_img {
       height: 38px;
       width: 38px;
+    }
+    .close {
+        display: flex;
+        position: absolute;
+        top: 11px;
+        right: 11px;
+        height: 42px;
+        width: 42px;
+        filter: invert(47%) sepia(98%) saturate(1615%) hue-rotate(1deg) brightness(103%) contrast(101%);
     }
   }

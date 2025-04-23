@@ -179,10 +179,6 @@ function changeBasketImg() {
     }
 }
 
-
-
-
-
 window.addEventListener("scroll", checkScroll);
 
 function checkScroll() {
