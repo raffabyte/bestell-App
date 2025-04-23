@@ -75,6 +75,7 @@ function renderBasket(){
         contentRef.innerHTML += getBasketHtml(index)
     }
 
+    changeBasketImg()
     hideLieferungIfEmpty()
     hideBill()
     hideText()
@@ -164,6 +165,23 @@ function checkIfBasketFull() {
         
     }
 }
+function changeBasketImg() {
+    let headerImg = document.getElementById('headerImg')
+    let buttonImg = document.getElementById('buttonImg')
+
+    if (basket.length > 0) {
+        headerImg.src = "assets/img/voll_einkaufswagen.png"
+        buttonImg.src = "assets/img/voll_einkaufswagen.png"
+    }
+    else {
+        headerImg.src = "assets/img/leer_einkaufswagen.png"
+        buttonImg.src = "assets/img/leer_einkaufswagen.png"
+    }
+}
+
+
+
+
 
 window.addEventListener("scroll", checkScroll);
 

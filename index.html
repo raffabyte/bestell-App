@@ -21,7 +21,7 @@
 <body onload="init()">
     <header>
         <img src="assets/icons/Bestell App- Logo.svg" alt="">
-        <img onclick="toggleBasket()" class="invert" src="assets/img/leer_einkaufswagen.png" alt="">
+        <img id="headerImg" onclick="toggleBasket()" class="invert" src="assets/img/leer_einkaufswagen.png" alt="">
     </header>
     <div class="content_wrapper">
         <section class="content">
@@ -93,8 +93,8 @@
         </section>
     </div>
     <div id="sticky_basket" class="sticky_basket">
-        <button class="sticky_basket_button" onclick="toggleBasket()">Warenkorb</button>
-      </div>
+        <button class="sticky_basket_button" onclick="toggleBasket()">Warenkorb <img id="buttonImg" class="invert button_img" src="assets/img/leer_einkaufswagen.png" alt=""></button>
+    </div>
       
     <footer></footer>
 </body>
