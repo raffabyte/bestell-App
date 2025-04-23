@@ -159,6 +159,11 @@ function remove(index) {
 function toggleBasket() {
     document.getElementById('basket_wrapper').classList.toggle('basket_open')
 }
+function checkIfBasketFull() {
+    if (basket > 0) {
+        
+    }
+}
 
 window.addEventListener("scroll", checkScroll);
 
