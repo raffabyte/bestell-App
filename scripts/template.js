@@ -8,6 +8,7 @@ function getHauptgerichtSpeisenHtml(index) {
     </button>
     </div>`
 }
+
 function getBeilageSpeisenHtml(index) {
     return `<div onclick="pushToBasket(${index}, 'beilagen')" class="speise_div">
     <h3>${menu.beilagen[index].name}</h3>
@@ -18,6 +19,7 @@ function getBeilageSpeisenHtml(index) {
     </button>
     </div>`
 }
+
 function getDessertSpeisenHtml(index) {
     return `<div onclick="pushToBasket(${index}, 'desserts')" class="speise_div">
     <h3>${menu.desserts[index].name}</h3>
@@ -28,6 +30,7 @@ function getDessertSpeisenHtml(index) {
     </button>
     </div>`
 }
+
 function getGetränkeHtml(index) {
     return `<div onclick="pushToBasket(${index}, 'getränke')" class="speise_div">
     <h3>${menu.getränke[index].name}</h3>
@@ -38,6 +41,7 @@ function getGetränkeHtml(index) {
     </button>
     </div>`
 }
+
 function getBasketHtml(index) {
     return `<div class="basket_item">
      <h4>${basket[index].name}</h4>
@@ -51,6 +55,7 @@ function getBasketHtml(index) {
      <div class="grauer_seperator_small"></div>
      </div>`
 }
+
 function getBillHtml(Zwischensumme, Lieferkosten, Gesamt) {
     return `<div class="FlexBetween">
     <p class="zwischensummeLieferkosten">Zwischensumme</p>

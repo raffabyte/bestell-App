@@ -18,10 +18,10 @@
     <link rel="stylesheet" href="styles/content.css">
     <link rel="stylesheet" href="styles/media.css">
 </head>
-<body onload="init()">
+<body id="overflow_hidden" onload="init()">
     <header>
         <img src="assets/icons/Bestell App- Logo.svg" alt="">
-        <img id="headerImg" onclick="toggleBasket()" class="invert" src="assets/img/leer_einkaufswagen.png" alt="">
+        <img id="headerImg" class="invert" src="assets/img/leer_einkaufswagen.png" alt="">
     </header>
     <div class="content_wrapper">
         <section class="content">
@@ -71,7 +71,7 @@
         </section>
         <section id="basket_wrapper" class="basket_wrapper">
             <div class="basket">
-                <h2 class="basket_header">Warenkorp</h2>
+                <h2 class="basket_header">Warenkorb</h2>
                 <img onclick="toggleBasket()" class="close" src="assets/img/kreuzsymbol-in-einem-kreis-schliessen.png" alt="">
                 <div class="grauer_seperator"></div>
                 <div id="basket_items" class="basket_items">
@@ -81,6 +81,7 @@
                     <p>Es ist noch nichts im Warenkorb</p>
                 </div>
                 <div id="abholen_liefern" class="abholen_liefern">
+                    <div class="grauer_seperator_oben"></div>
                     <div class="d_flex">
                         <img id="liefernLassen" onclick="liefernLassen()" class="liefernLassen" src="assets/img/lieferwagen.png" alt="">
                         <img id="selbstAbholen" onclick="selbstAbholen()" class="selbstAbholen ausgewählt" src="assets/img/paket-geliefert.png" alt="">
@@ -90,13 +91,23 @@
                 <div id="bill" class="bill">
                     
                 </div>
+                <div id="button_div" class="button_div">
+                    <button onclick="toggleFinish()" class="bestellen_button">Jetzt bestellen</button>
+                </div>
+                
             </div>
         </section>
     </div>
     <div id="sticky_basket" class="sticky_basket">
-        <button class="sticky_basket_button" onclick="toggleBasket()">Warenkorb <img id="buttonImg" class="invert button_img" src="assets/img/leer_einkaufswagen.png" alt=""></button>
+        <button class="sticky_basket_button" onclick="toggleBasket()">Warenkorb <img id="buttonImg" class="invert button_img" src="assets/img/leer_einkaufswagen.png" alt=""><p class="basket_count"></p></button>
+        
     </div>
-      
+    <div id="overlay" class="overlay d_none">
+        <div class="overlay_content">
+            <img onclick="toggleFinish()" class="buttonClose" src="assets/img/kreuzsymbol-in-einem-kreis-schliessen.png" alt="">
+            <p>kekw</p>
+        </div>
+    </div>
     <footer></footer>
 </body>
 </html>

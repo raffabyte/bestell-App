@@ -106,3 +106,6 @@ a {
     width: 26px;
     filter: invert(47%) sepia(98%) saturate(1615%) hue-rotate(1deg) brightness(103%) contrast(101%);
 }
+.plus:hover {
+    cursor: pointer;
+}

@@ -10,7 +10,9 @@ function init() {
     getBasketFromLocalStorage()
     localStorageLieferung()
     renderBasket()
+    updateBasketCount()
 }
+
 function renderHauptgerichte() {
     let contentRef = document.getElementById('hauptgerichte_speisen')
     contentRef.innerHTML = ""
@@ -18,6 +20,7 @@ function renderHauptgerichte() {
         contentRef.innerHTML += getHauptgerichtSpeisenHtml(index)
     }
 }
+
 function renderBeilagen() {
     let contentRef = document.getElementById('beilagen_speisen')
     contentRef.innerHTML = ""
@@ -25,6 +28,7 @@ function renderBeilagen() {
         contentRef.innerHTML += getBeilageSpeisenHtml(index)
     }
 }
+
 function renderDesserts() {
     let contentRef = document.getElementById('desserts_speisen')
     contentRef.innerHTML = ""
@@ -32,6 +36,7 @@ function renderDesserts() {
         contentRef.innerHTML += getDessertSpeisenHtml(index)
     }
 }
+
 function renderGetränke() {
     let contentRef = document.getElementById('getränke_speisen')
     contentRef.innerHTML = ""
@@ -39,6 +44,7 @@ function renderGetränke() {
         contentRef.innerHTML += getGetränkeHtml(index)
     }
 }
+
 function hideText() {
     if (basket.length > 0) {
         document.getElementById('basket_text').style.display = 'none'
@@ -47,6 +53,7 @@ function hideText() {
         document.getElementById('basket_text').style.display = 'flex'
     }
 }
+
 function pushToBasket(index, category) {
     let item = menu[category][index];
 
@@ -64,9 +71,12 @@ function pushToBasket(index, category) {
         });
     }
 
+    saveAmountOfBasket()
+    updateBasketCount()
     saveBasketTolocalStorage()
     renderBasket();
 }
+
 function renderBasket(){
     let contentRef = document.getElementById('basket_items')
     contentRef.innerHTML = ""
@@ -79,7 +89,18 @@ function renderBasket(){
     hideLieferungIfEmpty()
     hideBill()
     hideText()
+    hidebutton()
 }
+
+function hidebutton() {
+    if (basket.length > 0) {
+        document.getElementById('button_div').style.display = 'flex'
+    }
+    else {
+        document.getElementById('button_div').style.display = 'none'
+    }
+}
+
 function hideBill() {
     if (basket.length > 0) {
         renderBill();
@@ -88,10 +109,12 @@ function hideBill() {
         document.getElementById('bill').style.display = 'none';
     }
 }
+
 function calculatePreis(amount, preis) {
     let total = amount * preis;
     return total.toFixed(2)
 }
+
 function hideLieferungIfEmpty() {
     if (basket.length > 0) {
         document.getElementById('abholen_liefern').style.display = 'flex'
@@ -100,6 +123,7 @@ function hideLieferungIfEmpty() {
         document.getElementById('abholen_liefern').style.display = 'none'
     }
 }
+
 function liefernLassen() {
     Lieferkosten = 5
     document.getElementById('selbstAbholen').classList.remove('ausgewählt')
@@ -107,6 +131,7 @@ function liefernLassen() {
     localStorage.setItem('lieferung', 'liefern')
     renderBill()
 }
+
 function selbstAbholen() {
     Lieferkosten = 0
     document.getElementById('liefernLassen').classList.remove('ausgewählt')
@@ -114,6 +139,7 @@ function selbstAbholen() {
     localStorage.setItem('lieferung', 'abholen')
     renderBill()
 }
+
 function renderBill() {
     let Zwischensumme = ClaculateZwischensumme()
     let Lieferkosten = checkLieferkosten()
@@ -122,6 +148,7 @@ function renderBill() {
     let contentRef = document.getElementById('bill')
     contentRef.innerHTML = getBillHtml(Zwischensumme, Lieferkosten, Gesamt)
 }
+
 function ClaculateZwischensumme() {
     let total = 0;
     for (let i = 0; i < basket.length; i++) {
@@ -129,12 +156,15 @@ function ClaculateZwischensumme() {
     }
     return total
 }
+
 function checkLieferkosten() {
     return Lieferkosten
 }
+
 function checkTotalAmount() {
     return ClaculateZwischensumme() + checkLieferkosten()
 }
+
 function minusAmount(index) {
     if (basket[index].amount > 1) {
         basket[index].amount--; 
@@ -142,29 +172,39 @@ function minusAmount(index) {
         basket.splice(index, 1);  
     }
 
+    saveAmountOfBasket();
+    updateBasketCount()
     saveBasketTolocalStorage();
     renderBasket();
 }
+
 function plusAmount(index) {
     basket[index].amount++;
 
     saveBasketTolocalStorage();
     renderBasket();
 }
+
 function remove(index) {
     basket.splice(index, 1);
 
+    saveAmountOfBasket();
+    updateBasketCount()
     saveBasketTolocalStorage();
     renderBasket();
 }
+
 function toggleBasket() {
     document.getElementById('basket_wrapper').classList.toggle('basket_open')
+    document.getElementById('overflow_hidden').classList.toggle('overflow')
 }
+
 function checkIfBasketFull() {
     if (basket > 0) {
         
     }
 }
+
 function changeBasketImg() {
     let headerImg = document.getElementById('headerImg')
     let buttonImg = document.getElementById('buttonImg')
@@ -177,6 +217,23 @@ function changeBasketImg() {
         headerImg.src = "assets/img/leer_einkaufswagen.png"
         buttonImg.src = "assets/img/leer_einkaufswagen.png"
     }
+}
+
+function toggleFinish() {
+    document.getElementById('overlay').classList.toggle('d_none')
+    document.body.classList.toggle('no-scroll');
+    document.getElementById('basket_wrapper').classList.remove('basket_open')
+    document.getElementById('overflow_hidden').classList.remove('overflow')
+    basket = [];
+    localStorage.clear();
+    init()
+}
+
+function updateBasketCount() {
+    const count = getAmountOfBasket();
+    const countElement = document.querySelector('.basket_count');
+    countElement.textContent = count;
+    countElement.style.display = count === 0 ? 'none' : 'inline-block';
 }
 
 window.addEventListener("scroll", checkScroll);

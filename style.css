@@ -3,7 +3,6 @@ html {
     scrollbar-width: thin; 
     scrollbar-color: #FE7E00 transparent; 
   }
-  
   html::-webkit-scrollbar {
     width: 8px;
   }
@@ -22,6 +21,12 @@ body {
     font-weight: 400;
     font-style: normal;
 }
+body.no-scroll {
+  overflow: hidden;
+}
+.overflow {
+  overflow: hidden;
+}
 header {
     display: flex;
     justify-content: space-between;
@@ -35,6 +40,39 @@ header {
 }
 .content_wrapper {
     display: flex;
+}
+.overlay {
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.375);
+}
+.overlay_content {
+  position: relative;
+  height: 400px;
+  width: 400px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+.buttonClose {
+  display: flex;
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  height: 42px;
+  width: 42px;
+  filter: invert(47%) sepia(98%) saturate(1615%) hue-rotate(1deg) brightness(103%) contrast(101%);
+}
+.d_none {
+  display: none;
 }
 footer {
     display: flex;
