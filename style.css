@@ -24,6 +24,9 @@ body {
 body.no-scroll {
   overflow: hidden;
 }
+button:hover {
+  cursor: pointer;
+}
 .overflow {
   overflow: hidden;
 }

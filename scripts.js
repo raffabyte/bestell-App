@@ -71,6 +71,10 @@ function pushToBasket(index, category) {
         });
     }
 
+    helper()
+}
+
+function helper() {
     saveAmountOfBasket()
     updateBasketCount()
     saveBasketTolocalStorage()
@@ -85,6 +89,10 @@ function renderBasket(){
         contentRef.innerHTML += getBasketHtml(index)
     }
 
+    helperTwo()
+}
+
+function helperTwo() {
     changeBasketImg()
     hideLieferungIfEmpty()
     hideBill()
@@ -172,10 +180,7 @@ function minusAmount(index) {
         basket.splice(index, 1);  
     }
 
-    saveAmountOfBasket();
-    updateBasketCount()
-    saveBasketTolocalStorage();
-    renderBasket();
+    helper()
 }
 
 function plusAmount(index) {
@@ -188,10 +193,7 @@ function plusAmount(index) {
 function remove(index) {
     basket.splice(index, 1);
 
-    saveAmountOfBasket();
-    updateBasketCount()
-    saveBasketTolocalStorage();
-    renderBasket();
+    helper()
 }
 
 function toggleBasket() {
